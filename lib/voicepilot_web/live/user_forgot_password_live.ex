@@ -5,8 +5,8 @@ defmodule VoicepilotWeb.UserForgotPasswordLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
+    <div class="">
+      <.header class="">
         Forgot your password?
         <:subtitle>We'll send a password reset link to your inbox</:subtitle>
       </.header>
@@ -14,12 +14,12 @@ defmodule VoicepilotWeb.UserForgotPasswordLive do
       <.simple_form for={@form} id="reset_password_form" phx-submit="send_email">
         <.input field={@form[:email]} type="email" placeholder="Email" required />
         <:actions>
-          <.button phx-disable-with="Sending..." class="w-full">
+          <.button phx-disable-with="Sending..." class="">
             Send password reset instructions
           </.button>
         </:actions>
       </.simple_form>
-      <p class="text-center mt-4">
+      <p class="">
         <.link href={~p"/users/register"}>Register</.link>
         |
         <.link href={~p"/users/log_in"}>Log in</.link>
