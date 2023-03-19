@@ -1,6 +1,6 @@
 # Voicepilot
 
-<img width="1280" alt="MacBook Air - 20" src="https://user-images.githubusercontent.com/54992484/226197995-9b6e979e-f939-4721-b4c0-363dc2d76b0f.png">
+<img width="1280" alt="MacBook Air - 19" src="https://user-images.githubusercontent.com/54992484/226198037-7282e0b3-1c68-457d-b133-23072097501e.png">
 
 To start your Phoenix server:
 
