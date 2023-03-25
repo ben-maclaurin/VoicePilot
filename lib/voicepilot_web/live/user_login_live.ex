@@ -3,7 +3,7 @@ defmodule VoicepilotWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mt-24 w-64 m-auto space-y-12 flex flex-col items-center">
+    <div class="mt-36 w-64 m-auto space-y-12 flex flex-col items-center">
       <.header class="tracking-tight font-medium text-gray-300 w-full">
         Sign in to account
       </.header>
@@ -16,8 +16,8 @@ defmodule VoicepilotWeb.UserLoginLive do
         class=""
       >
         <div class="mb-8 flex flex-col space-y-4">
-          <.input field={@form[:email]} type="email" label="Email" required />
-          <.input field={@form[:password]} type="password" label="Password" required />
+          <.input field={@form[:email]} placeholder="Email ..." type="email" label="Email" required />
+          <.input field={@form[:password]} type="password" placeholder="••••••" label="Password" required />
         </div>
 
         <:actions>
