@@ -2,6 +2,7 @@
 // https://tailwindcss.com/docs/configuration
 
 const plugin = require("tailwindcss/plugin")
+const colors = require("tailwindcss/colors")
 const fs = require("fs")
 const path = require("path")
 
