@@ -204,7 +204,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def simple_form(assigns) do
     ~H"""
-    <.form class="w-full" :let={f} for={@for} as={@as} {@rest}>
+    <.form :let={f} class="w-full" for={@for} as={@as} {@rest}>
       <div class="w-full">
         <%= render_slot(@inner_block, f) %>
         <div :for={action <- @actions} class="">
@@ -231,7 +231,11 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def button(assigns) do
     ~H"""
-    <button type={@type} class="bg-gray-700 font-medium border-t border-gray-600 tracking-tighter w-full rounded-full py-2" {@rest}>
+    <button
+      type={@type}
+      class="bg-gray-700 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
+      {@rest}
+    >
       <%= render_slot(@inner_block) %>
     </button>
     """
@@ -354,7 +358,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="text-gray-400 text-sm mb-1 font-medium tracking-tighter">
+    <label for={@for} class="text-gray-400 text-sm mb-1 font-medium tracking-tight">
       <%= render_slot(@inner_block) %>
     </label>
     """
