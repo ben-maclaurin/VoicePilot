@@ -17,7 +17,13 @@ defmodule VoicepilotWeb.UserLoginLive do
       >
         <div class="mb-8 flex flex-col space-y-4">
           <.input field={@form[:email]} placeholder="Email ..." type="email" label="Email" required />
-          <.input field={@form[:password]} type="password" placeholder="••••••" label="Password" required />
+          <.input
+            field={@form[:password]}
+            type="password"
+            placeholder="••••••"
+            label="Password"
+            required
+          />
         </div>
 
         <:actions>
