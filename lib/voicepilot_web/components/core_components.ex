@@ -46,12 +46,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def modal(assigns) do
     ~H"""
-    <div
-      id={@id}
-      phx-mounted={@show && show_modal(@id)}
-      phx-remove={hide_modal(@id)}
-      class=""
-    >
+    <div id={@id} phx-mounted={@show && show_modal(@id)} phx-remove={hide_modal(@id)} class="">
       <div id={"#{@id}-bg"} class="" aria-hidden="true" />
       <div
         class=""
@@ -86,11 +81,7 @@ defmodule VoicepilotWeb.CoreComponents do
                   <h1 id={"#{@id}-title"} class="">
                     <%= render_slot(@title) %>
                   </h1>
-                  <p
-                    :if={@subtitle != []}
-                    id={"#{@id}-description"}
-                    class=""
-                  >
+                  <p :if={@subtitle != []} id={"#{@id}-description"} class="">
                     <%= render_slot(@subtitle) %>
                   </p>
                 </header>
@@ -105,11 +96,7 @@ defmodule VoicepilotWeb.CoreComponents do
                   >
                     <%= render_slot(confirm) %>
                   </.button>
-                  <.link
-                    :for={cancel <- @cancel}
-                    phx-click={hide_modal(@on_cancel, @id)}
-                    class=""
-                  >
+                  <.link :for={cancel <- @cancel} phx-click={hide_modal(@on_cancel, @id)} class="">
                     <%= render_slot(cancel) %>
                   </.link>
                 </div>
@@ -157,12 +144,7 @@ defmodule VoicepilotWeb.CoreComponents do
         <%= @title %>
       </p>
       <p class=""><%= msg %></p>
-      <button
-        :if={@close}
-        type="button"
-        class=""
-        aria-label={gettext("close")}
-      >
+      <button :if={@close} type="button" class="" aria-label={gettext("close")}>
         <.icon name="hero-x-mark-solid" class="" />
       </button>
     </div>
@@ -249,11 +231,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def button(assigns) do
     ~H"""
-    <button
-      type={@type}
-      class=""
-      {@rest}
-    >
+    <button type={@type} class="" {@rest}>
       <%= render_slot(@inner_block) %>
     </button>
     """
@@ -332,13 +310,7 @@ defmodule VoicepilotWeb.CoreComponents do
     ~H"""
     <div phx-feedback-for={@name}>
       <.label for={@id}><%= @label %></.label>
-      <select
-        id={@id}
-        name={@name}
-        class=""
-        multiple={@multiple}
-        {@rest}
-      >
+      <select id={@id} name={@name} class="" multiple={@multiple} {@rest}>
         <option :if={@prompt} value=""><%= @prompt %></option>
         <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
       </select>
@@ -351,12 +323,7 @@ defmodule VoicepilotWeb.CoreComponents do
     ~H"""
     <div phx-feedback-for={@name}>
       <.label for={@id}><%= @label %></.label>
-      <textarea
-        id={@id || @name}
-        name={@name}
-        class=""
-        {@rest}
-      ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
+      <textarea id={@id || @name} name={@name} class="" {@rest}><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
     """
@@ -494,10 +461,7 @@ defmodule VoicepilotWeb.CoreComponents do
             <td :if={@action != []} class="">
               <div class="">
                 <span class="" />
-                <span
-                  :for={action <- @action}
-                  class=""
-                >
+                <span :for={action <- @action} class="">
                   <%= render_slot(action, @row_item.(row)) %>
                 </span>
               </div>
@@ -549,10 +513,7 @@ defmodule VoicepilotWeb.CoreComponents do
   def back(assigns) do
     ~H"""
     <div class="">
-      <.link
-        navigate={@navigate}
-        class=""
-      >
+      <.link navigate={@navigate} class="">
         <.icon name="hero-arrow-left-solid" class="" />
         <%= render_slot(@inner_block) %>
       </.link>
