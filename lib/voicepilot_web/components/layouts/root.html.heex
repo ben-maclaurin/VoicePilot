@@ -11,6 +11,9 @@
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
+  <div class="">
+    <img src={~p"/assets/logo.svg"} />
+  </div>
   <body class="bg-no-repeat h-[100vh] bg-gradient-to-b from-gray-800 to-gray-900">
     <ul class="">
       <%= if @current_user do %>
@@ -18,36 +21,23 @@
           <%= @current_user.email %>
         </li>
         <li>
-          <.link
-            href={~p"/users/settings"}
-            class=""
-          >
+          <.link href={~p"/users/settings"} class="">
             Settings
           </.link>
         </li>
         <li>
-          <.link
-            href={~p"/users/log_out"}
-            method="delete"
-            class=""
-          >
+          <.link href={~p"/users/log_out"} method="delete" class="">
             Log out
           </.link>
         </li>
       <% else %>
         <li>
-          <.link
-            href={~p"/users/register"}
-            class=""
-          >
+          <.link href={~p"/users/register"} class="">
             Register
           </.link>
         </li>
         <li>
-          <.link
-            href={~p"/users/log_in"}
-            class=""
-          >
+          <.link href={~p"/users/log_in"} class="">
             Log in
           </.link>
         </li>
