@@ -2,4 +2,16 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: "Berkeley Mono";
+  font-weight: bold;
+  src: url("BerkeleyMono-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Berkeley Mono";
+  font-weight: regular;
+  src: url("BerkeleyMono-Regular.ttf");
+}
+
 /* This file is for your main application CSS */

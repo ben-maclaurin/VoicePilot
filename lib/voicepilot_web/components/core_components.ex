@@ -358,7 +358,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="text-gray-400 text-sm mb-1 font-medium tracking-tight">
+    <label for={@for} class="font-mono text-gray-400 text-sm mb-1 font-medium tracking-tight">
       <%= render_slot(@inner_block) %>
     </label>
     """
