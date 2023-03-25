@@ -12,7 +12,10 @@ module.exports = {
     "../lib/*_web.ex",
     "../lib/*_web/**/*.*ex"
   ],
-  theme: {
+    theme: {
+      colors: {
+        gray: colors.neutral
+      },
     extend: {
       colors: {
         brand: "#FD4F00",
