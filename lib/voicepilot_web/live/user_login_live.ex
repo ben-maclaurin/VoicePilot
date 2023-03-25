@@ -3,16 +3,9 @@ defmodule VoicepilotWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mt-24 w-64 m-auto space-y-8 flex flex-col items-center">
-      <.header class="">
+    <div class="mt-24 w-64 m-auto space-y-12 flex flex-col items-center">
+      <.header class="tracking-tight font-medium text-gray-300 w-full">
         Sign in to account
-        <:subtitle>
-          Don't have an account?
-          <.link navigate={~p"/users/register"} class="">
-            Sign up
-          </.link>
-          for an account now.
-        </:subtitle>
       </.header>
 
       <.simple_form
