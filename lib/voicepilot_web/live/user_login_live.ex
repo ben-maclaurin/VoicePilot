@@ -3,7 +3,7 @@ defmodule VoicepilotWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="">
+    <div class="mt-24 space-y-8 text-center flex flex-col items-center">
       <.header class="">
         Sign in to account
         <:subtitle>
