@@ -331,14 +331,14 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def input(assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div phx-feedback-for={@name} class="flex flex-col items-start">
       <.label for={@id}><%= @label %></.label>
       <input
         type={@type}
         name={@name}
         id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
-        class=""
+        class="bg-gray-700 border-none rounded-lg"
         {@rest}
       />
       <.error :for={msg <- @errors}><%= msg %></.error>
@@ -354,7 +354,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="">
+    <label for={@for} class="text-gray-400 text-sm mb-1 font-medium tracking-tight">
       <%= render_slot(@inner_block) %>
     </label>
     """
