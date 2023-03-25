@@ -342,7 +342,7 @@ defmodule VoicepilotWeb.CoreComponents do
         name={@name}
         id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
-        class="w-full bg-gray-700 border-t-1 border-gray-600 border-l-0 border-r-0 border-b-0 rounded-lg"
+        class="shadow w-full bg-gray-700 border-t-1 border-gray-600 border-l-0 border-r-0 border-b-0 rounded-lg"
         {@rest}
       />
       <.error :for={msg <- @errors}><%= msg %></.error>
