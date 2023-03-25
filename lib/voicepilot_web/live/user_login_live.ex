@@ -28,15 +28,19 @@ defmodule VoicepilotWeb.UserLoginLive do
         </div>
 
         <:actions>
-          <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
-          <.link href={~p"/users/reset_password"} class="text-sm">
-            Forgot your password?
-          </.link>
-        </:actions>
-        <:actions>
           <.button phx-disable-with="Signing in..." class="">
             Sign in
           </.button>
+        </:actions>
+        <:actions>
+          <div class="flex flex-col items-center mt-3">
+            <.link
+              href={~p"/users/reset_password"}
+              class="text-gray-400 font-medium tracking-tight text-sm"
+            >
+              Forgot your password?
+            </.link>
+          </div>
         </:actions>
       </.simple_form>
     </div>
