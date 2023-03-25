@@ -204,8 +204,8 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def simple_form(assigns) do
     ~H"""
-    <.form :let={f} for={@for} as={@as} {@rest}>
-      <div class="">
+    <.form class="w-full" :let={f} for={@for} as={@as} {@rest}>
+      <div class="w-full">
         <%= render_slot(@inner_block, f) %>
         <div :for={action <- @actions} class="">
           <%= render_slot(action, f) %>
@@ -331,14 +331,14 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def input(assigns) do
     ~H"""
-    <div phx-feedback-for={@name} class="flex flex-col items-start">
+    <div phx-feedback-for={@name} class="w-full flex flex-col items-start">
       <.label for={@id}><%= @label %></.label>
       <input
         type={@type}
         name={@name}
         id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
-        class="bg-gray-700 border-none rounded-lg"
+        class="w-full bg-gray-700 border-none rounded-lg"
         {@rest}
       />
       <.error :for={msg <- @errors}><%= msg %></.error>
@@ -354,7 +354,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def label(assigns) do
     ~H"""
-    <label for={@for} class="text-gray-400 text-sm mb-1 font-medium tracking-tight">
+    <label for={@for} class="text-gray-400 text-sm mb-1 font-medium tracking-tighter">
       <%= render_slot(@inner_block) %>
     </label>
     """
