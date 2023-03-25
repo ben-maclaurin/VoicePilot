@@ -231,7 +231,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def button(assigns) do
     ~H"""
-    <button type={@type} class="" {@rest}>
+    <button type={@type} class="bg-gray-700 font-medium border-t border-gray-600 tracking-tighter w-full rounded-full py-2" {@rest}>
       <%= render_slot(@inner_block) %>
     </button>
     """
@@ -338,7 +338,7 @@ defmodule VoicepilotWeb.CoreComponents do
         name={@name}
         id={@id || @name}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
-        class="w-full bg-gray-700 border-none rounded-lg"
+        class="w-full bg-gray-700 border-t-1 border-gray-600 border-l-0 border-r-0 border-b-0 rounded-lg"
         {@rest}
       />
       <.error :for={msg <- @errors}><%= msg %></.error>

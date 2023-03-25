@@ -3,7 +3,7 @@ defmodule VoicepilotWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mt-24 w-72 m-auto space-y-8 flex flex-col items-center">
+    <div class="mt-24 w-64 m-auto space-y-8 flex flex-col items-center">
       <.header class="">
         Sign in to account
         <:subtitle>
@@ -35,7 +35,7 @@ defmodule VoicepilotWeb.UserLoginLive do
         </:actions>
         <:actions>
           <.button phx-disable-with="Signing in..." class="">
-            Sign in <span aria-hidden="true">→</span>
+            Sign in
           </.button>
         </:actions>
       </.simple_form>
