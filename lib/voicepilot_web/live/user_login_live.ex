@@ -3,7 +3,7 @@ defmodule VoicepilotWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mt-24 space-y-8 text-center flex flex-col items-center">
+    <div class="mt-24 w-72 m-auto space-y-8 flex flex-col items-center">
       <.header class="">
         Sign in to account
         <:subtitle>
@@ -15,15 +15,21 @@ defmodule VoicepilotWeb.UserLoginLive do
         </:subtitle>
       </.header>
 
-      <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
-        <div class="flex flex-col space-y-2">
+      <.simple_form
+        for={@form}
+        id="login_form"
+        action={~p"/users/log_in"}
+        phx-update="ignore"
+        class=""
+      >
+        <div class="mb-8 flex flex-col space-y-4">
           <.input field={@form[:email]} type="email" label="Email" required />
           <.input field={@form[:password]} type="password" label="Password" required />
         </div>
 
         <:actions>
           <.input field={@form[:remember_me]} type="checkbox" label="Keep me logged in" />
-          <.link href={~p"/users/reset_password"} class="">
+          <.link href={~p"/users/reset_password"} class="text-sm">
             Forgot your password?
           </.link>
         </:actions>
