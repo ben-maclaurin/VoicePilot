@@ -1,5 +1,7 @@
 # Voicepilot
 
+<img width="1280" alt="uml" src="https://user-images.githubusercontent.com/54992484/227782075-cc66cf61-1741-4374-a134-54c43b1f0b02.png">
+
 <img width="1280" alt="MacBook Air - 19" src="https://user-images.githubusercontent.com/54992484/226198037-7282e0b3-1c68-457d-b133-23072097501e.png">
 
 To start your Phoenix server:
