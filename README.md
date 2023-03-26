@@ -1,6 +1,6 @@
 # Voicepilot
 
-<img width="1280" alt="uml" src="https://user-images.githubusercontent.com/54992484/227782120-1dd6f0dd-83d5-44cd-8696-bdeeb4018385.png">
+<img width="1280" alt="uml" src="https://user-images.githubusercontent.com/54992484/227782155-6f615476-2127-4fe8-b894-b8c668a3b0a5.png">
 
 <img width="1280" alt="MacBook Air - 19" src="https://user-images.githubusercontent.com/54992484/226198037-7282e0b3-1c68-457d-b133-23072097501e.png">
 
