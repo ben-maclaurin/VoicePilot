@@ -17,6 +17,7 @@ defmodule VoicepilotWeb.SiteLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Site")
+    |> assign(:user, socket.assigns.current_user)
     |> assign(:site, Business.get_site!(id))
   end
 
