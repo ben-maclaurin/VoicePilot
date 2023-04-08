@@ -35,7 +35,12 @@ defmodule Voicepilot.BusinessTest do
 
     test "update_site/2 with valid data updates the site" do
       site = site_fixture()
-      update_attrs = %{text: "some updated text", title: "some updated title", url: "some updated url"}
+
+      update_attrs = %{
+        text: "some updated text",
+        title: "some updated title",
+        url: "some updated url"
+      }
 
       assert {:ok, %Site{} = site} = Business.update_site(site, update_attrs)
       assert site.text == "some updated text"
