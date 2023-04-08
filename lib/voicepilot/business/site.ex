@@ -3,10 +3,10 @@ defmodule Voicepilot.Business.Site do
   import Ecto.Changeset
 
   schema "sites" do
-    field :text, :string
-    field :title, :string
-    field :url, :string
-    field :user_id, :id
+    field(:text, :string)
+    field(:title, :string)
+    field(:url, :string)
+    belongs_to(:user, User)
 
     timestamps()
   end
