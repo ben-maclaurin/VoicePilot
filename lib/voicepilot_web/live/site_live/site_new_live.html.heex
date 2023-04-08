@@ -3,9 +3,11 @@
 
     <form phx-submit="new">
         <div class="flex space-y-2 flex-col">
+            <label>Title</label>
             <input name="title" />
+            <label>URL</label>
             <input name="url" />
-            <input name="user_id" value={@user.id} />
+            <input class="hidden" name="user_id" value={@user.id} />
         </div>
                 
         <button type="submit">Submit</button>
