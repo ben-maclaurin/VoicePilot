@@ -66,7 +66,7 @@ defmodule VoicepilotWeb.Router do
 
     live_session :default, on_mount: VoicepilotWeb.UserAuthLive do
       live("/site", SiteLive, :index)
-      live("/site/new", SiteLive, :new)
+      live("/site/new", SiteNewLive, :new)
     end
   end
 
