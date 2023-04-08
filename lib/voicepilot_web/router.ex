@@ -68,14 +68,14 @@ defmodule VoicepilotWeb.Router do
       on_mount: [{VoicepilotWeb.UserAuth, :ensure_authenticated}] do
       live("/users/settings", UserSettingsLive, :edit)
       live("/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email)
+
+      live("/sites", SiteLive.Index, :index)
+      live("/sites/new", SiteLive.Index, :new)
+      live("/sites/:id/edit", SiteLive.Index, :edit)
+
+      live("/sites/:id", SiteLive.Show, :show)
+      live("/sites/:id/show/edit", SiteLive.Show, :edit)
     end
-
-    live("/sites", SiteLive.Index, :index)
-    live("/sites/new", SiteLive.Index, :new)
-    live("/sites/:id/edit", SiteLive.Index, :edit)
-
-    live("/sites/:id", SiteLive.Show, :show)
-    live("/sites/:id/show/edit", SiteLive.Show, :edit)
   end
 
   scope "/", VoicepilotWeb do

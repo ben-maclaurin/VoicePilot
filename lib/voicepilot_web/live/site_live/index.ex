@@ -23,6 +23,7 @@ defmodule VoicepilotWeb.SiteLive.Index do
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Site")
+    |> assign(:user, socket.assigns.current_user)
     |> assign(:site, %Site{})
   end
 

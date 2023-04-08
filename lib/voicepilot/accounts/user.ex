@@ -1,12 +1,14 @@
 defmodule Voicepilot.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Voicepilot.Business.Site
 
   schema "users" do
-    field :email, :string
-    field :password, :string, virtual: true, redact: true
-    field :hashed_password, :string, redact: true
-    field :confirmed_at, :naive_datetime
+    field(:email, :string)
+    field(:password, :string, virtual: true, redact: true)
+    field(:hashed_password, :string, redact: true)
+    field(:confirmed_at, :naive_datetime)
+    has_many(:sites, Site)
 
     timestamps()
   end
