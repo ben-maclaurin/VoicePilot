@@ -2,17 +2,17 @@ defmodule VoicepilotWeb.SiteNewLive do
   use VoicepilotWeb, :live_view
 
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    {:ok, assign(socket, user: socket.assigns.current_user)}
   end
 
   def handle_event("new", site_params, socket) do
-    site_params_with_user_id = Map.put(site_params, "user_id", socket.assigns.current_user.id)
-
-    case Voicepilot.Business.create_site(site_params_with_user_id) do
+    case Voicepilot.Business.create_site(site_params) do
       {:ok, site} ->
         site
 
       {:error, %Ecto.Changeset{} = changeset} ->
+        IO.puts("this happenede")
+        IO.inspect(changeset)
         assign(socket, changeset: changeset)
     end
 

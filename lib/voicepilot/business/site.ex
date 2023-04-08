@@ -17,6 +17,5 @@ defmodule Voicepilot.Business.Site do
     site
     |> cast(attrs, [:title, :url, :text, :user_id])
     |> validate_required([:title, :url, :user_id])
-    |> unique_constraint(:user_id)
   end
 end

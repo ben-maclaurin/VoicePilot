@@ -10,7 +10,5 @@ defmodule Voicepilot.Repo.Migrations.CreateSites do
 
       timestamps()
     end
-
-    create unique_index(:sites, [:user_id])
   end
 end
