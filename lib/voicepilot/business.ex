@@ -101,4 +101,9 @@ defmodule Voicepilot.Business do
   def change_site(%Site{} = site, attrs \\ %{}) do
     Site.changeset(site, attrs)
   end
+
+  def get_sites_by_user(user) do
+    Site.Query.for_user(user)
+    |> Repo.one()
+  end
 end
