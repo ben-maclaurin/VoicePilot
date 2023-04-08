@@ -15,7 +15,7 @@ defmodule Voicepilot.Business.Site do
   def changeset(site, attrs) do
     site
     |> cast(attrs, [:title, :url, :text])
-    |> validate_required([:title, :url, :text])
+    |> validate_required([:title, :url, :text, :user_id])
     |> unique_constraint(:user_id)
   end
 end
