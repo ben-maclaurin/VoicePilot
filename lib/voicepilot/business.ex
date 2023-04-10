@@ -50,10 +50,10 @@ defmodule Voicepilot.Business do
 
   """
   def create_site(attrs \\ %{}) do
-    IO.puts(Voicepilot.Extract.extract_article_text(attrs["url"]))
+    site = Map.put(attrs, "text", Voicepilot.Extract.extract_article_text(attrs["url"]))
 
     %Site{}
-    |> Site.changeset(attrs)
+    |> Site.changeset(site)
     |> Repo.insert()
   end
 
