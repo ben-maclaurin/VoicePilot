@@ -19,4 +19,18 @@ defmodule Voicepilot.BusinessFixtures do
 
     site
   end
+
+  @doc """
+  Generate a voice.
+  """
+  def voice_fixture(attrs \\ %{}) do
+    {:ok, voice} =
+      attrs
+      |> Enum.into(%{
+        voice_id: "some voice_id"
+      })
+      |> Voicepilot.Business.create_voice()
+
+    voice
+  end
 end

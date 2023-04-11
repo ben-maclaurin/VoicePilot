@@ -1,0 +1,31 @@
+<.header>
+  Voice <%= @voice.id %>
+  <:subtitle>This is a voice record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/voices/#{@voice}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit voice</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Voice"><%= @voice.voice_id %></:item>
+</.list>
+
+<.back navigate={~p"/voices"}>Back to voices</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="voice-modal"
+  show
+  on_cancel={JS.patch(~p"/voices/#{@voice}")}
+>
+  <.live_component
+    module={VoicepilotWeb.VoiceLive.FormComponent}
+    id={@voice.id}
+    title={@page_title}
+    action={@live_action}
+    voice={@voice}
+    patch={~p"/voices/#{@voice}"}
+  />
+</.modal>

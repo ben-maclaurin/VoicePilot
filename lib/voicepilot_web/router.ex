@@ -75,6 +75,13 @@ defmodule VoicepilotWeb.Router do
 
       live("/sites/:id", SiteLive.Show, :show)
       live("/sites/:id/show/edit", SiteLive.Show, :edit)
+
+      live("/voices", VoiceLive.Index, :index)
+      live("/voices/new", VoiceLive.Index, :new)
+      live("/voices/:id/edit", VoiceLive.Index, :edit)
+
+      live("/voices/:id", VoiceLive.Show, :show)
+      live("/voices/:id/show/edit", VoiceLive.Show, :edit)
     end
   end
 

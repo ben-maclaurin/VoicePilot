@@ -1,0 +1,46 @@
+<.header>
+  Listing Voices
+  <:actions>
+    <.link patch={~p"/voices/new"}>
+      <.button>New Voice</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="voices"
+  rows={@streams.voices}
+  row_click={fn {_id, voice} -> JS.navigate(~p"/voices/#{voice}") end}
+>
+  <:col :let={{_id, voice}} label="Voice"><%= voice.voice_id %></:col>
+  <:action :let={{_id, voice}}>
+    <div class="sr-only">
+      <.link navigate={~p"/voices/#{voice}"}>Show</.link>
+    </div>
+    <.link patch={~p"/voices/#{voice}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, voice}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: voice.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="voice-modal"
+  show
+  on_cancel={JS.navigate(~p"/voices")}
+>
+  <.live_component
+    module={VoicepilotWeb.VoiceLive.FormComponent}
+    id={@voice.id || :new}
+    title={@page_title}
+    action={@live_action}
+    voice={@voice}
+    patch={~p"/voices"}
+  />
+</.modal>
