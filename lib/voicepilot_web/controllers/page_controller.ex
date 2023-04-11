@@ -6,4 +6,10 @@ defmodule VoicepilotWeb.PageController do
     # so skip the default app layout.
     render(conn, :home, layout: false)
   end
+
+  def tts_callback(conn, params) do
+    IO.puts("This message was posted")
+
+    send_resp(conn, 200, "acknowledged")
+  end
 end
