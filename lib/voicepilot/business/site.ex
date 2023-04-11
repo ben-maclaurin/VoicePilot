@@ -9,7 +9,6 @@ defmodule Voicepilot.Business.Site do
     field(:url, :string)
     field(:filename, :string)
     field(:transcription_id, :string)
-    field(:voice, :string)
     belongs_to(:user, User)
 
     timestamps()
