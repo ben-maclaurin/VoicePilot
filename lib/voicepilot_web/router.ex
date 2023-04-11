@@ -69,12 +69,16 @@ defmodule VoicepilotWeb.Router do
       live("/users/settings", UserSettingsLive, :edit)
       live("/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email)
 
+      # Sites
+
       live("/sites", SiteLive.Index, :index)
       live("/sites/new", SiteLive.Index, :new)
       live("/sites/:id/edit", SiteLive.Index, :edit)
 
       live("/sites/:id", SiteLive.Show, :show)
       live("/sites/:id/show/edit", SiteLive.Show, :edit)
+
+      # Voices
 
       live("/voices", VoiceLive.Index, :index)
       live("/voices/new", VoiceLive.Index, :new)

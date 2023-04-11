@@ -1,7 +1,7 @@
 defmodule Voicepilot.TTS do
   alias HTTPoison
 
-  def convert_text_to_speech(site) do
+  def convert_transcript(site) do
     url = "https://play.ht/api/v1/convert"
 
     headers = [

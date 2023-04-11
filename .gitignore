@@ -35,3 +35,6 @@ voicepilot-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Secrets
+config/secret.exs
+
