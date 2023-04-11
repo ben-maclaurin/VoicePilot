@@ -90,9 +90,12 @@ defmodule VoicepilotWeb.Router do
   end
 
   scope "/", VoicepilotWeb do
-    pipe_through([:browser])
-
     post("/tts_callback", PageController, :tts_callback)
+    get("/tts_callback", PageController, :tts_callback)
+  end
+
+  scope "/", VoicepilotWeb do
+    pipe_through([:browser])
 
     delete("/users/log_out", UserSessionController, :delete)
 
