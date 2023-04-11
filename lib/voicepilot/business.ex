@@ -38,6 +38,12 @@ defmodule Voicepilot.Business do
   """
   def get_site!(id), do: Repo.get!(Site, id)
 
+  def get_site_by_transcription_id(transcription_id) do
+    query = from(site in Site, where: site.transcription_id == ^transcription_id)
+
+    Repo.one(query)
+  end
+
   @doc """
   Creates a site.
 
@@ -53,7 +59,13 @@ defmodule Voicepilot.Business do
   def create_site(attrs \\ %{}) do
     site = Map.put(attrs, "transcript", Voicepilot.Extract.extract_article_text(attrs["url"]))
 
-    Voicepilot.TTS.convert(site)
+    transcription_id =
+      case Voicepilot.TTS.convert_and_return_id(site) do
+        {:ok, transcription_id} ->
+          transcription_id
+      end
+
+    site = Map.put(site, "transcription_id", transcription_id)
 
     %Site{}
     |> Site.changeset(site)
