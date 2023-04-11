@@ -21,6 +21,7 @@ defmodule VoicepilotWeb.SiteLive.FormComponent do
       >
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:url]} type="text" label="Url" />
+        <.input field={@form[:voice_id]} type="text" label="Voice" />
         <span class="hidden">
           <.input field={@form[:transcript]} type="text" label="Text" />
           <.input field={@form[:user_id]} type="text" value={@user.id} label="" />

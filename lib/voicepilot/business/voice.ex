@@ -1,10 +1,10 @@
 defmodule Voicepilot.Business.Voice do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Voicepilot.Business.Site
 
   schema "voices" do
     field(:voice_id, :string)
-    field(:site_id, :id)
     has_many(:sites, Site)
 
     timestamps()
