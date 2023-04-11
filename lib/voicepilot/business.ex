@@ -5,6 +5,7 @@ defmodule Voicepilot.Business do
 
   import Ecto.Query, warn: false
   alias Voicepilot.Repo
+  alias Voicepilot.TTS
 
   alias Voicepilot.Business.Site
 
@@ -51,6 +52,8 @@ defmodule Voicepilot.Business do
   """
   def create_site(attrs \\ %{}) do
     site = Map.put(attrs, "transcript", Voicepilot.Extract.extract_article_text(attrs["url"]))
+
+    Voicepilot.TTS.convert(site)
 
     %Site{}
     |> Site.changeset(site)

@@ -1,22 +1,33 @@
 defmodule Voicepilot.TTS do
   alias HTTPoison
+  import Voicepilot.Business
 
-  def convert_transcript(site) do
+  def convert(site) do
     url = "https://play.ht/api/v1/convert"
 
     headers = [
-      {"Authorization", "Bearer #{Application.fetch_env!(:play_ht, :api_key)}"},
-      {"X-User-ID", Application.fetch_env!(:play_ht, :user_id)},
+      {"Authorization", "Bearer *"},
+      {"X-User-ID", "*"},
       {"Content-Type", "application/json"}
     ]
 
+    voice = get_voice!(site["voice_id"])
+
     json_body =
       %{
-        "voice" => site.voice_id,
-        "content" => site.transcript
+        "voice" => voice.voice_id,
+        "content" => [site["transcript"]]
       }
       |> Jason.encode!()
 
-    HTTPoison.post(url, json_body, headers)
+    case HTTPoison.post(url, json_body, headers) do
+      {:ok, response} ->
+        IO.inspect(response, label: "Success response")
+        {:ok, response}
+
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        IO.inspect(reason, label: "Error reason")
+        {:error, reason}
+    end
   end
 end
