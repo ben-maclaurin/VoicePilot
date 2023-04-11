@@ -10,6 +10,8 @@ defmodule VoicepilotWeb.PageController do
   def tts_callback(conn, params) do
     IO.puts("This message was posted")
 
+    IO.inspect(params)
+
     send_resp(conn, 200, "acknowledged")
   end
 end
