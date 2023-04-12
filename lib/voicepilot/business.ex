@@ -66,6 +66,8 @@ defmodule Voicepilot.Business do
 
     site = Map.put(site, "transcription_id", transcription_id)
 
+    site = Map.put(site, "original_voice_id", attrs["voice_id"])
+
     site =
       Map.put(
         site,
