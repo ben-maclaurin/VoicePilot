@@ -14,7 +14,9 @@
 >
   <:col :let={{_id, site}} label="Title"><%= site.title %></:col>
   <:col :let={{_id, site}} label="Url"><%= site.url %></:col>
-  <:col :let={{_id, site}} label="Transcript"><%= site.transcript %></:col>
+  <:col :let={{_id, site}} label="Transcription ID"><%= site.transcription_id %></:col>
+  <:col :let={{_id, site}} label="Filename"><%= site.filename %></:col>
+
   <:action :let={{_id, site}}>
     <div class="sr-only">
       <.link navigate={~p"/sites/#{site}"}>Show</.link>
