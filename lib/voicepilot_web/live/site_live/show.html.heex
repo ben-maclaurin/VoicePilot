@@ -15,6 +15,9 @@
   <:item title="Filename"><%= @site.filename %></:item>
 </.list>
 
+<audio controls src={@site.filename}></audio>
+<iframe src={@site.url} width="100%" class="h-screen" />
+
 <.back navigate={~p"/sites"}>Back to sites</.back>
 
 <.modal :if={@live_action == :edit} id="site-modal" show on_cancel={JS.patch(~p"/sites/#{@site}")}>
