@@ -66,6 +66,13 @@ defmodule Voicepilot.Business do
 
     site = Map.put(site, "transcription_id", transcription_id)
 
+    site =
+      Map.put(
+        site,
+        "filename",
+        "https://peregrine-results.s3.us-east-2.amazonaws.com/results/#{transcription_id}_0.wav"
+      )
+
     %Site{}
     |> Site.changeset(site)
     |> Repo.insert()
