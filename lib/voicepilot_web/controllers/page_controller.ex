@@ -13,7 +13,7 @@ defmodule VoicepilotWeb.PageController do
 
     if params["status"] === "SUCCESS" do
       site = get_site_by_transcription_id(params["transcriptionId"])
-      IO.puts(site)
+      IO.inspect(site)
       update_site(site, %{filename: params["output"]})
     end
 
