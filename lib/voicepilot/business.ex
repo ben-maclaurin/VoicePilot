@@ -5,7 +5,6 @@ defmodule Voicepilot.Business do
 
   import Ecto.Query, warn: false
   alias Voicepilot.Repo
-  alias Voicepilot.TTS
 
   alias Voicepilot.Business.Site
 
