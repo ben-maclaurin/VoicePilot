@@ -2,10 +2,25 @@ defmodule VoicepilotWeb.SiteLive.Show do
   use VoicepilotWeb, :live_view
 
   alias Voicepilot.Business
+  alias HTTPoison
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, socket}
+  def mount(params, _session, socket) do
+    site = Business.get_site!(params["id"])
+
+    status =
+      case HTTPoison.get(site.filename) do
+        {:ok, %HTTPoison.Response{status_code: 200, body: _body}} ->
+          "SUCCESS"
+
+        {:ok, %HTTPoison.Response{status_code: _status_code, body: _body}} ->
+          "LOADING"
+
+        {:error, %HTTPoison.Error{reason: _reason}} ->
+          "ERROR"
+      end
+
+    {:ok, socket |> assign(:status, status)}
   end
 
   @impl true

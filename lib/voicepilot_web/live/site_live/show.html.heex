@@ -1,3 +1,5 @@
+<%= if @status === "SUCCESS" do %>
+
 <.header>
   Site <%= @site.id %>
   <:subtitle>This is a site record from your database.</:subtitle>
@@ -30,3 +32,7 @@
     patch={~p"/sites/#{@site}"}
   />
 </.modal>
+
+<% else %>
+<p>Audio file is loading please come back later ...</p>
+<% end %>
