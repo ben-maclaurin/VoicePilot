@@ -18,7 +18,7 @@ defmodule Voicepilot.Business.Site do
   @doc false
   def changeset(site, attrs) do
     site
-    |> cast(attrs, [:title, :url, :transcript, :transcription_id, :user_id, :voice_id])
+    |> cast(attrs, [:title, :url, :transcript, :transcription_id, :user_id, :filename, :voice_id])
     |> validate_required([:title, :url, :user_id, :voice_id, :transcription_id])
   end
 end
