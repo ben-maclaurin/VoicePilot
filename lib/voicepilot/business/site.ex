@@ -2,6 +2,7 @@ defmodule Voicepilot.Business.Site do
   use Ecto.Schema
   import Ecto.Changeset
   alias Voicepilot.Accounts.User
+  alias Voicepilot.Business.Voice
 
   schema "sites" do
     field(:transcript, :string)
@@ -11,6 +12,7 @@ defmodule Voicepilot.Business.Site do
     field(:transcription_id, :string)
     belongs_to(:user, User)
     belongs_to(:voice, Voice)
+    field(:original_voice_id, :string)
 
     timestamps()
   end
@@ -18,7 +20,23 @@ defmodule Voicepilot.Business.Site do
   @doc false
   def changeset(site, attrs) do
     site
-    |> cast(attrs, [:title, :url, :transcript, :transcription_id, :user_id, :filename, :voice_id])
-    |> validate_required([:title, :url, :user_id, :voice_id, :transcription_id])
+    |> cast(attrs, [
+      :title,
+      :url,
+      :transcript,
+      :transcription_id,
+      :user_id,
+      :filename,
+      :voice_id,
+      :original_voice_id
+    ])
+    |> validate_required([
+      :title,
+      :url,
+      :user_id,
+      :voice_id,
+      :transcription_id,
+      :original_voice_id
+    ])
   end
 end

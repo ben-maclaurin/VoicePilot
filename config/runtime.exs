@@ -20,7 +20,7 @@ if System.get_env("PHX_SERVER") do
   config :voicepilot, VoicepilotWeb.Endpoint, server: true
 end
 
-config :voicepilot, :play_ht_api_key, System.fetch_env!("PLAY_HT_API_KEY")
+config :voicepilot, :play_ht_api_key, System.get_env("PLAY_HT_API_KEY")
 
 if config_env() == :prod do
   database_url =
