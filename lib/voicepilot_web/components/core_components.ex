@@ -236,11 +236,7 @@ defmodule VoicepilotWeb.CoreComponents do
 
   def button(assigns) do
     ~H"""
-    <button
-      type={@type}
-      class={@class}
-      {@rest}
-    >
+    <button type={@type} class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
     </button>
     """
