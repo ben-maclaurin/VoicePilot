@@ -119,4 +119,58 @@ defmodule Voicepilot.BusinessTest do
       assert %Ecto.Changeset{} = Business.change_voice(voice)
     end
   end
+
+  describe "sitelists" do
+    alias Voicepilot.Business.SiteList
+
+    import Voicepilot.BusinessFixtures
+
+    @invalid_attrs %{title: nil}
+
+    test "list_sitelists/0 returns all sitelists" do
+      site_list = site_list_fixture()
+      assert Business.list_sitelists() == [site_list]
+    end
+
+    test "get_site_list!/1 returns the site_list with given id" do
+      site_list = site_list_fixture()
+      assert Business.get_site_list!(site_list.id) == site_list
+    end
+
+    test "create_site_list/1 with valid data creates a site_list" do
+      valid_attrs = %{title: "some title"}
+
+      assert {:ok, %SiteList{} = site_list} = Business.create_site_list(valid_attrs)
+      assert site_list.title == "some title"
+    end
+
+    test "create_site_list/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Business.create_site_list(@invalid_attrs)
+    end
+
+    test "update_site_list/2 with valid data updates the site_list" do
+      site_list = site_list_fixture()
+      update_attrs = %{title: "some updated title"}
+
+      assert {:ok, %SiteList{} = site_list} = Business.update_site_list(site_list, update_attrs)
+      assert site_list.title == "some updated title"
+    end
+
+    test "update_site_list/2 with invalid data returns error changeset" do
+      site_list = site_list_fixture()
+      assert {:error, %Ecto.Changeset{}} = Business.update_site_list(site_list, @invalid_attrs)
+      assert site_list == Business.get_site_list!(site_list.id)
+    end
+
+    test "delete_site_list/1 deletes the site_list" do
+      site_list = site_list_fixture()
+      assert {:ok, %SiteList{}} = Business.delete_site_list(site_list)
+      assert_raise Ecto.NoResultsError, fn -> Business.get_site_list!(site_list.id) end
+    end
+
+    test "change_site_list/1 returns a site_list changeset" do
+      site_list = site_list_fixture()
+      assert %Ecto.Changeset{} = Business.change_site_list(site_list)
+    end
+  end
 end

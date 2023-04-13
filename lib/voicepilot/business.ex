@@ -222,4 +222,100 @@ defmodule Voicepilot.Business do
   def change_voice(%Voice{} = voice, attrs \\ %{}) do
     Voice.changeset(voice, attrs)
   end
+
+  alias Voicepilot.Business.SiteList
+
+  @doc """
+  Returns the list of sitelists.
+
+  ## Examples
+
+      iex> list_sitelists()
+      [%SiteList{}, ...]
+
+  """
+  def list_sitelists do
+    Repo.all(SiteList)
+  end
+
+  @doc """
+  Gets a single site_list.
+
+  Raises `Ecto.NoResultsError` if the Site list does not exist.
+
+  ## Examples
+
+      iex> get_site_list!(123)
+      %SiteList{}
+
+      iex> get_site_list!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_site_list!(id), do: Repo.get!(SiteList, id)
+
+  @doc """
+  Creates a site_list.
+
+  ## Examples
+
+      iex> create_site_list(%{field: value})
+      {:ok, %SiteList{}}
+
+      iex> create_site_list(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_site_list(attrs \\ %{}) do
+    %SiteList{}
+    |> SiteList.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a site_list.
+
+  ## Examples
+
+      iex> update_site_list(site_list, %{field: new_value})
+      {:ok, %SiteList{}}
+
+      iex> update_site_list(site_list, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_site_list(%SiteList{} = site_list, attrs) do
+    site_list
+    |> SiteList.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a site_list.
+
+  ## Examples
+
+      iex> delete_site_list(site_list)
+      {:ok, %SiteList{}}
+
+      iex> delete_site_list(site_list)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_site_list(%SiteList{} = site_list) do
+    Repo.delete(site_list)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking site_list changes.
+
+  ## Examples
+
+      iex> change_site_list(site_list)
+      %Ecto.Changeset{data: %SiteList{}}
+
+  """
+  def change_site_list(%SiteList{} = site_list, attrs \\ %{}) do
+    SiteList.changeset(site_list, attrs)
+  end
 end
