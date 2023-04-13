@@ -3,7 +3,7 @@ defmodule Voicepilot.Repo.Migrations.AddSiteListRelationToSites do
 
   def change do
     alter table(:sites) do
-      add :site_list_id, references(:site_lists, on_delete: nothing)
+      add :site_list_id, references(:sitelists, on_delete: :nothing)
     end
 
   end
