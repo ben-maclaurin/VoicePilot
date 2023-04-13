@@ -1,9 +1,11 @@
 defmodule Voicepilot.Business.SiteList do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Voicepilot.Bussines.Site
 
   schema "sitelists" do
-    field :title, :string
+    field(:title, :string)
+    has_many(:sites, Site)
 
     timestamps()
   end
