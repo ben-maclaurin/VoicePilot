@@ -9,34 +9,33 @@
   <audio controls class="hidden" id="voice" src={@site.filename}></audio>
   <div class="mt-12">
     <div class="flex flex-row mb-5 justify-between">
-        <div class="flex space-x-3">
-            <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
-            <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
+      <div class="flex space-x-3">
+        <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
+          <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
             <svg
-            width="9"
-            height="15"
-            viewBox="0 0 9 15"
-            fill="none"
-            class="mr-2"
-            xmlns="http://www.w3.org/2000/svg"
+              width="9"
+              height="15"
+              viewBox="0 0 9 15"
+              fill="none"
+              class="mr-2"
+              xmlns="http://www.w3.org/2000/svg"
             >
-            <path
-            d="M0.339623 7.17845C0.339623 6.9043 0.444443 6.67048 0.654083 6.46083L6.94329 0.308698C7.12068 0.13131 7.33838 0.0426158 7.5964 0.0426158C8.1205 0.0426158 8.53978 0.44577 8.53978 0.969871C8.53978 1.22789 8.43496 1.46172 8.25758 1.64717L2.58116 7.17845L8.25758 12.7097C8.4269 12.8871 8.53978 13.1209 8.53978 13.379C8.53978 13.9111 8.1205 14.3143 7.5964 14.3143C7.33838 14.3143 7.12068 14.2256 6.94329 14.0482L0.654083 7.89606C0.43638 7.68642 0.339623 7.45259 0.339623 7.17845Z"
-            fill="#C9C9C9"
-            />
+              <path
+                d="M0.339623 7.17845C0.339623 6.9043 0.444443 6.67048 0.654083 6.46083L6.94329 0.308698C7.12068 0.13131 7.33838 0.0426158 7.5964 0.0426158C8.1205 0.0426158 8.53978 0.44577 8.53978 0.969871C8.53978 1.22789 8.43496 1.46172 8.25758 1.64717L2.58116 7.17845L8.25758 12.7097C8.4269 12.8871 8.53978 13.1209 8.53978 13.379C8.53978 13.9111 8.1205 14.3143 7.5964 14.3143C7.33838 14.3143 7.12068 14.2256 6.94329 14.0482L0.654083 7.89606C0.43638 7.68642 0.339623 7.45259 0.339623 7.17845Z"
+                fill="#C9C9C9"
+              />
             </svg>
             Back to styles
-            </.button>
-            </.link>
-            <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
-            <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
-
+          </.button>
+        </.link>
+        <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
+          <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
             Open link in browser
-            </.button>
-            </.link>
-            </div>
-            <div class="flex flex-row space-x-4 text-sm items-center ">
-            <p class="uppercase text-gray-300 font-mono">PLAYING STYLE: <%= @site.title %></p>
+          </.button>
+        </.link>
+      </div>
+      <div class="flex flex-row space-x-4 text-sm items-center ">
+        <p class="uppercase text-gray-300 font-mono">PLAYING STYLE: <%= @site.title %></p>
         <div class="flex">
           <.button
             class="ring-4 ring-gray-900 hover:bg-gray-600 hover:border-gray-500 hidden bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
