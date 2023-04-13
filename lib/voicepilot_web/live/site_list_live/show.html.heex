@@ -13,7 +13,7 @@
 </.list>
 
 <%= for site <- @sites do %>
-  <p><%= site.title %></p>
+  <a href={~p"/sites/#{site.id}"}><%= site.title %></a>
 <% end %>
 
 <.back navigate={~p"/sitelists"}>Back to sitelists</.back>
