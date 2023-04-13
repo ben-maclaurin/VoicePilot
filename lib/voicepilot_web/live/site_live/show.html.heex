@@ -1,7 +1,5 @@
 <%= if @status === "SUCCESS" do %>
   <.header>
-    Site <%= @site.id %>
-    <:subtitle>This is a site record from your database.</:subtitle>
     <:actions>
       <.link patch={~p"/sites/#{@site}/show/edit"} phx-click={JS.push_focus()}>
         <.button>Edit site</.button>
@@ -9,17 +7,18 @@
     </:actions>
   </.header>
 
-  <.list>
-    <:item title="Title"><%= @site.title %></:item>
-    <:item title="Url"><%= @site.url %></:item>
-    <:item title="Transcript"><%= @site.original_voice_id %></:item>
-    <:item title="Filename"><%= @site.site_list_id %></:item>
-  </.list>
-
   <p>Site list id is <%= @site.site_list_id %></p>
 
-  <audio controls src={@site.filename}></audio>
-  <iframe src={@site.url} width="100%" class="h-screen" />
+    <audio controls src={@site.filename}></audio>
+
+    <div class="flex flex-row space-x-6">
+        <div class="p-8 bg-gray-900 w-1/2 rounded-xl">
+            <iframe src={@site.url} width="100%" class="h-[500px]" />
+        </div>
+        <div class="p-8 bg-gray-900 w-1/2 overflow-y-scroll rounded-xl overflow-x-hidden">
+            <p class="h-[500px] font-mono text-sm"><%= @site.transcript %></p>
+        </div>
+    </div>
 
   <.back navigate={~p"/sites"}>Back to sites</.back>
 
