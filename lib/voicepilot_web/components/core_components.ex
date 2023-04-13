@@ -224,7 +224,12 @@ defmodule VoicepilotWeb.CoreComponents do
       <.button phx-click="go" class="ml-2">Send!</.button>
   """
   attr(:type, :string, default: nil)
-  attr(:class, :string, default: nil)
+
+  attr(:class, :string,
+    default:
+      "bg-gray-700 hover:bg-gray-600 hover:border-gray-500 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
+  )
+
   attr(:rest, :global, include: ~w(disabled form name value))
 
   slot(:inner_block, required: true)
@@ -233,7 +238,7 @@ defmodule VoicepilotWeb.CoreComponents do
     ~H"""
     <button
       type={@type}
-      class="bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
+      class={@class}
       {@rest}
     >
       <%= render_slot(@inner_block) %>
