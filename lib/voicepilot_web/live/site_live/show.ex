@@ -6,19 +6,21 @@ defmodule VoicepilotWeb.SiteLive.Show do
 
   @impl true
   def mount(params, _session, socket) do
-    site = Business.get_site!(params["id"])
+    # site = Business.get_site!(params["id"])
 
-    status =
-      case HTTPoison.get(site.filename) do
-        {:ok, %HTTPoison.Response{status_code: 200, body: _body}} ->
-          "SUCCESS"
+    # status =
+    #   case HTTPoison.get(site.filename) do
+    #     {:ok, %HTTPoison.Response{status_code: 200, body: _body}} ->
+    #       "SUCCESS"
 
-        {:ok, %HTTPoison.Response{status_code: _status_code, body: _body}} ->
-          "LOADING"
+    #     {:ok, %HTTPoison.Response{status_code: _status_code, body: _body}} ->
+    #       "LOADING"
 
-        {:error, %HTTPoison.Error{reason: _reason}} ->
-          "ERROR"
-      end
+    #     {:error, %HTTPoison.Error{reason: _reason}} ->
+    #       "ERROR"
+    #   end
+
+    status = "SUCCESS"
 
     {:ok, socket |> assign(:status, status)}
   end
@@ -28,6 +30,7 @@ defmodule VoicepilotWeb.SiteLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
+     |> assign(:user, socket.assigns.current_user)
      |> assign(:site, Business.get_site!(id))}
   end
 

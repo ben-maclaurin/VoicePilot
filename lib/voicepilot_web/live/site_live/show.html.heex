@@ -1,39 +1,43 @@
 <%= if @status === "SUCCESS" do %>
+  <.header>
+    Site <%= @site.id %>
+    <:subtitle>This is a site record from your database.</:subtitle>
+    <:actions>
+      <.link patch={~p"/sites/#{@site}/show/edit"} phx-click={JS.push_focus()}>
+        <.button>Edit site</.button>
+      </.link>
+    </:actions>
+  </.header>
 
-<.header>
-  Site <%= @site.id %>
-  <:subtitle>This is a site record from your database.</:subtitle>
-  <:actions>
-    <.link patch={~p"/sites/#{@site}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit site</.button>
-    </.link>
-  </:actions>
-</.header>
+  <.list>
+    <:item title="Title"><%= @site.title %></:item>
+    <:item title="Url"><%= @site.url %></:item>
+    <:item title="Transcript"><%= @site.original_voice_id %></:item>
+    <:item title="Filename"><%= @site.filename %></:item>
+  </.list>
 
-<.list>
-  <:item title="Title"><%= @site.title %></:item>
-  <:item title="Url"><%= @site.url %></:item>
-  <:item title="Transcript"><%= @site.transcript %></:item>
-  <:item title="Filename"><%= @site.filename %></:item>
-</.list>
+  <audio controls src={@site.filename}></audio>
+  <iframe src={@site.url} width="100%" class="h-screen" />
 
-<audio controls src={@site.filename}></audio>
-<iframe src={@site.url} width="100%" class="h-screen" />
+  <.back navigate={~p"/sites"}>Back to sites</.back>
 
-<.back navigate={~p"/sites"}>Back to sites</.back>
-
-<.modal :if={@live_action == :edit} id="site-modal" show on_cancel={JS.patch(~p"/sites/#{@site}")}>
-  <.live_component
-    module={VoicepilotWeb.SiteLive.FormComponent}
-    id={@site.id}
-    title={@page_title}
-    action={@live_action}
-    site={@site}
-    patch={~p"/sites/#{@site}"}
-  />
-</.modal>
-
+  <.modal
+    :if={@live_action == :edit}
+    id="site-modal"
+    show
+    on_cancel={JS.patch(~p"/sites/#{@site}")}
+  >
+    <.live_component
+      module={VoicepilotWeb.SiteLive.FormComponent}
+      id={@site.id}
+      title={@page_title}
+      action={@live_action}
+      user={@user}
+      site={@site}
+      patch={~p"/sites/#{@site}"}
+    />
+  </.modal>
 <% else %>
-<p>Audio file is loading please come back later ...</p>
-<p><%= @site.transcript %></p>
+  <p>Audio file is loading please come back later ...</p>
+  <p><%= @site.transcript %></p>
 <% end %>
