@@ -3,6 +3,7 @@ defmodule Voicepilot.Business.Site do
   import Ecto.Changeset
   alias Voicepilot.Accounts.User
   alias Voicepilot.Business.Voice
+  alias Voicepilot.Business.SiteList
 
   schema "sites" do
     field(:transcript, :string)
@@ -12,6 +13,7 @@ defmodule Voicepilot.Business.Site do
     field(:transcription_id, :string)
     belongs_to(:user, User)
     belongs_to(:voice, Voice)
+    belongs_to(:site_list, SiteList)
     field(:original_voice_id, :string)
 
     timestamps()
