@@ -30,7 +30,8 @@ defmodule Voicepilot.Business.Site do
       :user_id,
       :filename,
       :voice_id,
-      :original_voice_id
+      :original_voice_id,
+      :site_list_id
     ])
     |> validate_required([
       :title,

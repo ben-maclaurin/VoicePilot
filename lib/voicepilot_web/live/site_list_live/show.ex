@@ -4,8 +4,10 @@ defmodule VoicepilotWeb.SiteListLive.Show do
   alias Voicepilot.Business
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, socket}
+  def mount(params, _session, socket) do
+    sites = Business.get_sites_by_site_list_id(params["id"])
+
+    {:ok, socket |> assign(:sites, sites)}
   end
 
   @impl true

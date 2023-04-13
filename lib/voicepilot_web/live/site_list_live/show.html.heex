@@ -12,9 +12,18 @@
   <:item title="Title"><%= @site_list.title %></:item>
 </.list>
 
+<%= for site <- @sites do %>
+  <p><%= site.title %></p>
+<% end %>
+
 <.back navigate={~p"/sitelists"}>Back to sitelists</.back>
 
-<.modal :if={@live_action == :edit} id="site_list-modal" show on_cancel={JS.patch(~p"/sitelists/#{@site_list}")}>
+<.modal
+  :if={@live_action == :edit}
+  id="site_list-modal"
+  show
+  on_cancel={JS.patch(~p"/sitelists/#{@site_list}")}
+>
   <.live_component
     module={VoicepilotWeb.SiteListLive.FormComponent}
     id={@site_list.id}

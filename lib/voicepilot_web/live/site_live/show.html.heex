@@ -13,8 +13,10 @@
     <:item title="Title"><%= @site.title %></:item>
     <:item title="Url"><%= @site.url %></:item>
     <:item title="Transcript"><%= @site.original_voice_id %></:item>
-    <:item title="Filename"><%= @site.filename %></:item>
+    <:item title="Filename"><%= @site.site_list_id %></:item>
   </.list>
+
+  <p>Site list id is <%= @site.site_list_id %></p>
 
   <audio controls src={@site.filename}></audio>
   <iframe src={@site.url} width="100%" class="h-screen" />

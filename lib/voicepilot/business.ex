@@ -43,6 +43,12 @@ defmodule Voicepilot.Business do
     Repo.one(query)
   end
 
+  def get_sites_by_site_list_id(site_list_id) do
+    query = from(site in Site, where: site.site_list_id == ^site_list_id)
+
+    Repo.all(query)
+  end
+
   @doc """
   Creates a site.
 
