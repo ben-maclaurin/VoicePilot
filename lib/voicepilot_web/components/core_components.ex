@@ -233,7 +233,7 @@ defmodule VoicepilotWeb.CoreComponents do
     ~H"""
     <button
       type={@type}
-      class="bg-gray-700 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
+      class="bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
       {@rest}
     >
       <%= render_slot(@inner_block) %>
