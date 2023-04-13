@@ -33,4 +33,18 @@ defmodule Voicepilot.BusinessFixtures do
 
     voice
   end
+
+  @doc """
+  Generate a site_list.
+  """
+  def site_list_fixture(attrs \\ %{}) do
+    {:ok, site_list} =
+      attrs
+      |> Enum.into(%{
+        title: "some title"
+      })
+      |> Voicepilot.Business.create_site_list()
+
+    site_list
+  end
 end

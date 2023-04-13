@@ -1,0 +1,46 @@
+<.header>
+  Listing Sitelists
+  <:actions>
+    <.link patch={~p"/sitelists/new"}>
+      <.button>New Site list</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="sitelists"
+  rows={@streams.sitelists}
+  row_click={fn {_id, site_list} -> JS.navigate(~p"/sitelists/#{site_list}") end}
+>
+  <:col :let={{_id, site_list}} label="Title"><%= site_list.title %></:col>
+  <:action :let={{_id, site_list}}>
+    <div class="sr-only">
+      <.link navigate={~p"/sitelists/#{site_list}"}>Show</.link>
+    </div>
+    <.link patch={~p"/sitelists/#{site_list}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, site_list}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: site_list.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="site_list-modal"
+  show
+  on_cancel={JS.navigate(~p"/sitelists")}
+>
+  <.live_component
+    module={VoicepilotWeb.SiteListLive.FormComponent}
+    id={@site_list.id || :new}
+    title={@page_title}
+    action={@live_action}
+    site_list={@site_list}
+    patch={~p"/sitelists"}
+  />
+</.modal>
