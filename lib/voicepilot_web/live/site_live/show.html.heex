@@ -1,11 +1,13 @@
 <%= if @status === "SUCCESS" do %>
-  <!-- <audio controls src={@site.filename}></audio> -->
+  <audio controls class="hidden" id="voice" src={@site.filename}></audio>
   <div class="mt-12">
     <div class="flex mb-3">
       <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
         <.button>Back to styles</.button>
       </.link>
     </div>
+
+    <.button onclick="toggleAudio('voice')">Play or pause</.button>
     <div class=" flex flex-row space-x-6">
       <div class="p-8 bg-gray-900 w-2/3 rounded-xl">
         <iframe src={@site.url} width="100%" class="h-[500px]" />
@@ -43,3 +45,15 @@
   <p>Audio file is loading please come back later ...</p>
   <p><%= @site.transcript %></p>
 <% end %>
+
+<script>
+  const toggleAudio = (audioId) => {
+      let audio = document.getElementById(audioId);
+
+      if (audio.paused) {
+          audio.play();
+      } else {
+          audio.pause();
+      }
+  }
+</script>
