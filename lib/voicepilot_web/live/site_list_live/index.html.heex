@@ -1,33 +1,18 @@
-<.header>
-  Listing Sitelists
-  <:actions>
-    <.link patch={~p"/sitelists/new"}>
-      <.button>New Site list</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="mt-12">
+  <h2 class="font-semibold font-mono uppercase border-b border-gray-500 pb-3 mb-6 text-xl">
+    Sites
+  </h2>
 
-<.table
-  id="sitelists"
-  rows={@streams.sitelists}
-  row_click={fn {_id, site_list} -> JS.navigate(~p"/sitelists/#{site_list}") end}
->
-  <:col :let={{_id, site_list}} label="Title"><%= site_list.title %></:col>
-  <:action :let={{_id, site_list}}>
-    <div class="sr-only">
-      <.link navigate={~p"/sitelists/#{site_list}"}>Show</.link>
-    </div>
-    <.link patch={~p"/sitelists/#{site_list}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, site_list}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: site_list.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
+  <div class="border-b border-gray-500 pb-6 flex space-y-3 flex-col">
+    <%= for {_id, site_list} <- @streams.sitelists do %>
+      <a href={~p"/sitelists/#{site_list.id}"}>
+        <div class="py-2 border-t border-gray-500 hover:bg-gray-500 hover:border-gray-400 text-gray-200 px-3 bg-gray-600 rounded-md font-mono">
+          <span class="text-gray-400">Voice / </span><%= site_list.title %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>
 
 <.modal
   :if={@live_action in [:new, :edit]}

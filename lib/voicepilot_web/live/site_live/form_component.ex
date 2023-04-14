@@ -7,11 +7,6 @@ defmodule VoicepilotWeb.SiteLive.FormComponent do
   def render(assigns) do
     ~H"""
     <div>
-      <.header>
-        <%= @title %>
-        <:subtitle>Use this form to manage site records in your database.</:subtitle>
-      </.header>
-
       <.simple_form
         for={@form}
         id="site-form"
@@ -21,8 +16,12 @@ defmodule VoicepilotWeb.SiteLive.FormComponent do
       >
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:url]} type="text" label="Url" />
-        <.input field={@form[:voice_id]} type="text" label="Voice" />
         <.input field={@form[:site_list_id]} type="text" label="Site list id" />
+        <select id="site_voice_id" name="site[voice_id]">
+          <%= for voice <- @voices do %>
+            <option value={voice.id} name={voice.voice_id}><%= voice.voice_id %></option>
+          <% end %>
+        </select>
         <span class="hidden">
           <.input field={@form[:transcript]} type="text" label="Text" />
           <.input field={@form[:user_id]} type="text" value={@user.id} label="" />
