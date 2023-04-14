@@ -1,22 +1,18 @@
-<.header>
-  Site list <%= @site_list.id %>
-  <:subtitle>This is a site_list record from your database.</:subtitle>
-  <:actions>
-    <.link patch={~p"/sitelists/#{@site_list}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit site_list</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="mt-12">
+  <h2 class="font-semibold font-mono uppercase border-b border-gray-500 pb-3 mb-6 text-xl">
+    <%= @site_list.title %>
+  </h2>
 
-<.list>
-  <:item title="Title"><%= @site_list.title %></:item>
-</.list>
-
-<%= for site <- @sites do %>
-  <a href={~p"/sites/#{site.id}"}><%= site.title %></a>
-<% end %>
-
-<.back navigate={~p"/sitelists"}>Back to sitelists</.back>
+  <div class="border-b border-gray-500 pb-6 flex space-y-3 flex-col">
+    <%= for site <- @sites do %>
+      <a href={~p"/sites/#{site.id}"}>
+        <div class="py-2 border-t border-gray-500 hover:bg-gray-500 hover:border-gray-400 text-gray-200 px-3 bg-gray-600 rounded-md font-mono">
+          <span class="text-gray-400">Voice / </span><%= site.title %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>
 
 <.modal
   :if={@live_action == :edit}
