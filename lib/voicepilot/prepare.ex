@@ -4,6 +4,11 @@ defmodule Voicepilot.Prepare do
     String.replace(text, regex, "")
   end
 
+  def remove_links(text) do
+    url_regex = ~r/\b(?:https?|ftp):\/\/\S+\b/i
+    String.replace(text, url_regex, "")
+  end
+
   def replace_hyphens_with_spaces(text) do
     String.replace(text, "-", " ")
   end
