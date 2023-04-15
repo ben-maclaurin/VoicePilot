@@ -69,31 +69,18 @@ defmodule VoicepilotWeb.Router do
       live("/users/settings", UserSettingsLive, :edit)
       live("/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email)
 
-      # Sites
-
-      live("/sites", SiteLive.Index, :index)
-      live("/sites/new", SiteLive.Index, :new)
-      live("/sites/:id/edit", SiteLive.Index, :edit)
-
-      live("/sites/:id", SiteLive.Show, :show)
-      live("/sites/:id/show/edit", SiteLive.Show, :edit)
-
-      # Voices
-
       live("/voices", VoiceLive.Index, :index)
       live("/voices/new", VoiceLive.Index, :new)
       live("/voices/:id/edit", VoiceLive.Index, :edit)
-
       live("/voices/:id", VoiceLive.Show, :show)
       live("/voices/:id/show/edit", VoiceLive.Show, :edit)
 
-      # Site Lists
+      live("/sites/new", SiteLive.Index, :new)
+      live("/sites/:id/edit", SiteLive.Index, :edit)
+      live("/sites/:id/show/edit", SiteLive.Show, :edit)
 
-      live("/sitelists", SiteListLive.Index, :index)
       live("/sitelists/new", SiteListLive.Index, :new)
       live("/sitelists/:id/edit", SiteListLive.Index, :edit)
-
-      live("/sitelists/:id", SiteListLive.Show, :show)
       live("/sitelists/:id/show/edit", SiteListLive.Show, :edit)
     end
   end
@@ -105,6 +92,12 @@ defmodule VoicepilotWeb.Router do
 
   scope "/", VoicepilotWeb do
     pipe_through([:browser])
+
+    live("/sites", SiteLive.Index, :index)
+    live("/sites/:id", SiteLive.Show, :show)
+
+    live("/sitelists", SiteListLive.Index, :index)
+    live("/sitelists/:id", SiteListLive.Show, :show)
 
     delete("/users/log_out", UserSessionController, :delete)
 

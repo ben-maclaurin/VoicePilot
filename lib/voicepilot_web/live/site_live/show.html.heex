@@ -1,120 +1,110 @@
-<%= if @status === "SUCCESS" do %>
-  <style>
-    .char {
-        opacity: 0;
-        transition: opacity .1s;
-    }
-  </style>
+<style>
+  .char {
+      opacity: 0;
+      transition: opacity .1s;
+  }
+</style>
 
-  <audio controls class="hidden" id="voice" src={@site.filename}></audio>
-  <div class="mt-12">
-    <div class="flex flex-row mb-5 justify-between">
-      <div class="flex space-x-3">
-        <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
-          <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
-            <svg
-              width="9"
-              height="15"
-              viewBox="0 0 9 15"
-              fill="none"
-              class="mr-2"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.339623 7.17845C0.339623 6.9043 0.444443 6.67048 0.654083 6.46083L6.94329 0.308698C7.12068 0.13131 7.33838 0.0426158 7.5964 0.0426158C8.1205 0.0426158 8.53978 0.44577 8.53978 0.969871C8.53978 1.22789 8.43496 1.46172 8.25758 1.64717L2.58116 7.17845L8.25758 12.7097C8.4269 12.8871 8.53978 13.1209 8.53978 13.379C8.53978 13.9111 8.1205 14.3143 7.5964 14.3143C7.33838 14.3143 7.12068 14.2256 6.94329 14.0482L0.654083 7.89606C0.43638 7.68642 0.339623 7.45259 0.339623 7.17845Z"
-                fill="#C9C9C9"
-              />
-            </svg>
-            Back to styles
-          </.button>
-        </.link>
-        <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
-          <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
-            Open link in browser
-          </.button>
-        </.link>
-      </div>
-      <div class="flex flex-row space-x-4 text-sm items-center ">
-        <p class="uppercase text-gray-300 font-mono">PLAYING STYLE: <%= @site.title %></p>
-        <div class="flex">
-          <.button
-            class="ring-4 ring-gray-900 hover:bg-gray-600 hover:border-gray-500 hidden bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
-            id="pauseButton"
-            onclick="toggleAudio('voice')"
+<audio controls class="hidden" id="voice" src={@site.filename}></audio>
+<div class="mt-12">
+  <div class="flex flex-row mb-5 justify-between">
+    <div class="flex space-x-3">
+      <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
+        <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
+          <svg
+            width="9"
+            height="15"
+            viewBox="0 0 9 15"
+            fill="none"
+            class="mr-2"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="10"
-              height="15"
-              viewBox="0 0 11 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.55529 14.1024H3.44081C4.16029 14.1024 4.5407 13.722 4.5407 12.9942V1.73073C4.5407 0.978179 4.16029 0.630846 3.44081 0.630846H1.55529C0.835813 0.630846 0.4554 1.01126 0.4554 1.73073V12.9942C0.4554 13.722 0.835813 14.1024 1.55529 14.1024ZM7.56746 14.1024H9.44471C10.1725 14.1024 10.5446 13.722 10.5446 12.9942V1.73073C10.5446 0.978179 10.1725 0.630846 9.44471 0.630846H7.56746C6.83971 0.630846 6.4593 1.01126 6.4593 1.73073V12.9942C6.4593 13.722 6.83971 14.1024 7.56746 14.1024Z"
-                fill="#C9C9C9"
-              />
-            </svg>
-          </.button>
-          <.button
-            class="ring-4 ring-gray-900 bg-gray-700 hover:bg-gray-600 hover:border-gray-500 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
-            id="playButton"
-            onclick="toggleAudio('voice')"
-          >
-            <svg
-              width="10"
-              height="15"
-              viewBox="0 0 13 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.18315 14.3753C1.51394 14.3753 1.79511 14.243 2.12591 14.0528L11.7685 8.47892C12.4549 8.0737 12.6948 7.80906 12.6948 7.37076C12.6948 6.93246 12.4549 6.66783 11.7685 6.27087L2.12591 0.688735C1.79511 0.498529 1.51394 0.374481 1.18315 0.374481C0.571178 0.374481 0.190766 0.837592 0.190766 1.55707V13.1845C0.190766 13.9039 0.571178 14.3753 1.18315 14.3753Z"
-                fill="#C9C9C9"
-              />
-            </svg>
-          </.button>
-        </div>
-      </div>
+            <path
+              d="M0.339623 7.17845C0.339623 6.9043 0.444443 6.67048 0.654083 6.46083L6.94329 0.308698C7.12068 0.13131 7.33838 0.0426158 7.5964 0.0426158C8.1205 0.0426158 8.53978 0.44577 8.53978 0.969871C8.53978 1.22789 8.43496 1.46172 8.25758 1.64717L2.58116 7.17845L8.25758 12.7097C8.4269 12.8871 8.53978 13.1209 8.53978 13.379C8.53978 13.9111 8.1205 14.3143 7.5964 14.3143C7.33838 14.3143 7.12068 14.2256 6.94329 14.0482L0.654083 7.89606C0.43638 7.68642 0.339623 7.45259 0.339623 7.17845Z"
+              fill="#C9C9C9"
+            />
+          </svg>
+          Back to styles
+        </.button>
+      </.link>
+      <.link patch={~p"/sitelists/#{@site.site_list_id}"}>
+        <.button class="ring-4 text-sm flex flex-row items-center hover:border-gray-500 hover:bg-gray-600 ring-gray-900 bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2">
+          Open link in browser
+        </.button>
+      </.link>
     </div>
-    <div class=" flex flex-row space-x-6">
-      <div class="p-8 bg-gray-900  w-2/3 rounded-xl">
-        <iframe src={@site.url} width="100%" class="h-[500px]" />
-      </div>
-      <div class="font-mono p-8 bg-gray-700 border-t border-gray-600 w-1/3 overflow-y-scroll rounded-xl overflow-x-hidden">
-        <p class="uppercase text-gray-300 pb-4 text-sm">Transcript</p>
-        <p id="transcript" class="h-[500px] text-gray-400 uppercase text-sm leading-loose">
-          <%= @site.transcript %>
-        </p>
+    <div class="flex flex-row space-x-4 text-sm items-center ">
+      <p class="uppercase text-gray-300 font-mono">PLAYING STYLE: <%= @site.title %></p>
+      <div class="flex">
+        <.button
+          class="ring-4 ring-gray-900 hover:bg-gray-600 hover:border-gray-500 hidden bg-gray-700 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
+          id="pauseButton"
+          onclick="toggleAudio('voice')"
+        >
+          <svg
+            width="10"
+            height="15"
+            viewBox="0 0 11 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.55529 14.1024H3.44081C4.16029 14.1024 4.5407 13.722 4.5407 12.9942V1.73073C4.5407 0.978179 4.16029 0.630846 3.44081 0.630846H1.55529C0.835813 0.630846 0.4554 1.01126 0.4554 1.73073V12.9942C0.4554 13.722 0.835813 14.1024 1.55529 14.1024ZM7.56746 14.1024H9.44471C10.1725 14.1024 10.5446 13.722 10.5446 12.9942V1.73073C10.5446 0.978179 10.1725 0.630846 9.44471 0.630846H7.56746C6.83971 0.630846 6.4593 1.01126 6.4593 1.73073V12.9942C6.4593 13.722 6.83971 14.1024 7.56746 14.1024Z"
+              fill="#C9C9C9"
+            />
+          </svg>
+        </.button>
+        <.button
+          class="ring-4 ring-gray-900 bg-gray-700 hover:bg-gray-600 hover:border-gray-500 px-4 font-medium border-t border-gray-600 tracking-tight w-full rounded-full py-2"
+          id="playButton"
+          onclick="toggleAudio('voice')"
+        >
+          <svg
+            width="10"
+            height="15"
+            viewBox="0 0 13 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.18315 14.3753C1.51394 14.3753 1.79511 14.243 2.12591 14.0528L11.7685 8.47892C12.4549 8.0737 12.6948 7.80906 12.6948 7.37076C12.6948 6.93246 12.4549 6.66783 11.7685 6.27087L2.12591 0.688735C1.79511 0.498529 1.51394 0.374481 1.18315 0.374481C0.571178 0.374481 0.190766 0.837592 0.190766 1.55707V13.1845C0.190766 13.9039 0.571178 14.3753 1.18315 14.3753Z"
+              fill="#C9C9C9"
+            />
+          </svg>
+        </.button>
       </div>
     </div>
   </div>
-  <!-- <.header>
+  <div class=" flex flex-row space-x-6">
+    <div class="p-8 bg-gray-900  w-2/3 rounded-xl">
+      <iframe src={@site.url} width="100%" class="h-[500px]" />
+    </div>
+    <div class="font-mono p-8 bg-gray-700 border-t border-gray-600 w-1/3 overflow-y-scroll rounded-xl overflow-x-hidden">
+      <p class="uppercase text-gray-300 pb-4 text-sm">Transcript</p>
+      <p id="transcript" class="h-[500px] text-gray-400 uppercase text-sm leading-loose">
+        <%= @site.transcript %>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- <.header>
        <:actions>
        <.link patch={~p"/sites/#{@site}/show/edit"} phx-click={JS.push_focus()}>
        <.button>Edit site</.button>
        </.link>
        </:actions>
        </.header> -->
-  <.modal
-    :if={@live_action == :edit}
-    id="site-modal"
-    show
-    on_cancel={JS.patch(~p"/sites/#{@site}")}
-  >
-    <.live_component
-      module={VoicepilotWeb.SiteLive.FormComponent}
-      id={@site.id}
-      title={@page_title}
-      action={@live_action}
-      user={@user}
-      site={@site}
-      patch={~p"/sites/#{@site}"}
-    />
-  </.modal>
-<% else %>
-  <p>Audio file is loading please come back later ...</p>
-  <p><%= @site.transcript %></p>
-<% end %>
+<.modal :if={@live_action == :edit} id="site-modal" show on_cancel={JS.patch(~p"/sites/#{@site}")}>
+  <.live_component
+    module={VoicepilotWeb.SiteLive.FormComponent}
+    id={@site.id}
+    title={@page_title}
+    action={@live_action}
+    user={@user}
+    site={@site}
+    patch={~p"/sites/#{@site}"}
+  />
+</.modal>
 
 <script>
   const toggleAudio = (audioId) => {
