@@ -67,9 +67,9 @@ defmodule Voicepilot.Business do
         attrs,
         "transcript",
         Voicepilot.Extract.extract_article_text(attrs["url"])
-        |> Voicepilot.Prepare.remove_brackets()
-        |> Voicepilot.Prepare.replace_hyphens_with_space()
         |> Voicepilot.Prepare.resolve_abbreviations()
+        |> Voicepilot.Prepare.remove_brackets()
+        |> Voicepilot.Prepare.replace_hyphens_with_spaces()
       )
 
     IO.inspect(site)
