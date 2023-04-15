@@ -9,6 +9,11 @@ defmodule Voicepilot.Prepare do
     String.replace(text, url_regex, "")
   end
 
+  def remove_symbols(text) do
+    non_alphanumeric_space_period_comma_regex = ~r/[^a-zA-Z0-9\s\.,]+/
+    String.replace(text, non_alphanumeric_space_period_comma_regex, "")
+  end
+
   def replace_hyphens_with_spaces(text) do
     String.replace(text, "-", " ")
   end
