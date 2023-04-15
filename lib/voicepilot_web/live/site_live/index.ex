@@ -7,8 +7,14 @@ defmodule VoicepilotWeb.SiteLive.Index do
   @impl true
   def mount(_params, _session, socket) do
     voices = Business.list_voices()
+    site_lists = Business.list_sitelists()
 
-    {:ok, stream(socket |> assign(:voices, voices), :sites, Business.list_sites())}
+    {:ok,
+     stream(
+       socket |> assign(:voices, voices) |> assign(:site_lists, site_lists),
+       :sites,
+       Business.list_sites()
+     )}
   end
 
   @impl true

@@ -62,7 +62,17 @@ defmodule Voicepilot.Business do
 
   """
   def create_site(attrs \\ %{}) do
-    site = Map.put(attrs, "transcript", Voicepilot.Extract.extract_article_text(attrs["url"]))
+    site =
+      Map.put(
+        attrs,
+        "transcript",
+        Voicepilot.Extract.extract_article_text(attrs["url"])
+        |> Voicepilot.Prepare.remove_brackets()
+        |> Voicepilot.Prepare.replace_hyphens_with_space()
+        |> Voicepilot.Prepare.resolve_abbreviations()
+      )
+
+    IO.inspect(site)
 
     transcription_id =
       case Voicepilot.TTS.convert_and_return_id(site) do
@@ -78,7 +88,7 @@ defmodule Voicepilot.Business do
       Map.put(
         site,
         "filename",
-        "https://peregrine-results.s3.us-east-2.amazonaws.com/results/#{transcription_id}_0.wav"
+        "https://peregrine-results.s3.us-east-2.amazonaws.com/pigeon/#{transcription_id}_0.wav"
       )
 
     %Site{}

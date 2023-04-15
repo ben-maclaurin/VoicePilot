@@ -16,7 +16,11 @@ defmodule VoicepilotWeb.SiteLive.FormComponent do
       >
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:url]} type="text" label="Url" />
-        <.input field={@form[:site_list_id]} type="text" label="Site list id" />
+        <select id="site_site_list_id" name="site[site_list_id]">
+          <%= for site_list <- @site_lists do %>
+            <option value={site_list.id} name={site_list.title}><%= site_list.title %></option>
+          <% end %>
+        </select>
         <select id="site_voice_id" name="site[voice_id]">
           <%= for voice <- @voices do %>
             <option value={voice.id} name={voice.voice_id}><%= voice.voice_id %></option>
